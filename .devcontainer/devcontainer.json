@@ -1,0 +1,27 @@
+{
+  "name": "didactic-chainsaw",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:latest": {}
+  },
+  "initializeCommand": "mkdir -p ${localEnv:HOME}/.claudelocal",
+  "mounts": [
+    "source=${localEnv:HOME}/.claudelocal,target=/home/vscode/.claude,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "BazelBuild.vscode-bazel",
+        "llvm-vs-code-extensions.vscode-clangd"
+      ],
+      "settings": {
+        "bazel.buildifierExecutable": "/usr/local/bin/buildifier",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}
