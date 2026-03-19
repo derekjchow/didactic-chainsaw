@@ -7,6 +7,10 @@ if [ -d "$HOME/.claude" ]; then
   echo "Claude config directory found at $HOME/.claude"
 fi
 
+# Install Gemini CLI
+echo "Installing Gemini CLI..."
+npm install -g @google/gemini-cli
+
 # Set up Python environment with uv
 echo "Setting up Python environment with uv..."
 uv python install 3.12

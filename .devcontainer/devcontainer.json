@@ -4,7 +4,9 @@
     "dockerfile": "Dockerfile"
   },
   "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:latest": {}
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "latest"
+    }
   },
   "initializeCommand": "mkdir -p ${localEnv:HOME}/.claudelocal",
   "mounts": [
