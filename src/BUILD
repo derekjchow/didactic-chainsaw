@@ -6,6 +6,7 @@ cc_binary(
         "@org_tensorflow//tensorflow/compiler/mlir/lite:tensorflow_lite",
         "@org_tensorflow//tensorflow/compiler/mlir/lite/stablehlo:tfl_stablehlo",
 
+        "@stablehlo//:stablehlo_ops",
         "@stablehlo//:linalg_passes",
 
         #"@org_tensorflow//tensorflow/compiler/mlir/tosa:tfl_passes",
@@ -13,6 +14,7 @@ cc_binary(
         "@llvm-project//mlir:Pass",
         "@llvm-project//mlir:FuncDialect",
         "@llvm-project//mlir:LinalgDialect",
+        # "@llvm-project//mlir:QuantDialect",
         # "@llvm-project//mlir:TosaDialect",
         # "@llvm-project//mlir:TosaToLinalg",
         "@llvm-project//mlir:TensorDialect",
