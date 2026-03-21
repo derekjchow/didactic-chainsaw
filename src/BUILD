@@ -37,10 +37,15 @@ cc_binary(
     deps = [
         "@org_tensorflow//tensorflow/compiler/mlir/lite:flatbuffer_import",
         "@org_tensorflow//tensorflow/compiler/mlir/lite:tensorflow_lite",
+        "@llvm-project//mlir:ArithDialect",
         "@llvm-project//mlir:IR",
+        "@llvm-project//mlir:Pass",
+        "@llvm-project//mlir:QuantOps",
         "@llvm-project//mlir:Support",
+        "@llvm-project//mlir:TransformUtils",
         "@llvm-project//llvm:Support",
         "@com_google_absl//absl/strings",
+        "@org_tensorflow//tensorflow/compiler/mlir/lite:flatbuffer_export",
     ],
 )
 
