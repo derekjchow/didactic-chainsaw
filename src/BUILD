@@ -32,6 +32,19 @@ cc_library(
 )
 
 cc_binary(
+    name = "spacial_conv",
+    srcs = ["spacial_conv.cc"],
+    deps = [
+        "@org_tensorflow//tensorflow/compiler/mlir/lite:flatbuffer_import",
+        "@org_tensorflow//tensorflow/compiler/mlir/lite:tensorflow_lite",
+        "@llvm-project//mlir:IR",
+        "@llvm-project//mlir:Support",
+        "@llvm-project//llvm:Support",
+        "@com_google_absl//absl/strings",
+    ],
+)
+
+cc_binary(
     name = "main",
     srcs = ["main.cc"],
     deps = [
