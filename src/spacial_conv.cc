@@ -260,7 +260,7 @@ struct SpaceToDepthConvRewriter
       mlir::TFL::Conv2DOp op,
       mlir::PatternRewriter& rewriter) const override {
     int64_t S = op.getStrideH();
-    if (S < 2 || op.getStrideW() != S) return mlir::failure();
+    if (S < 3 || op.getStrideW() != S) return mlir::failure();
     if (op.getDilationHFactor() != 1 || op.getDilationWFactor() != 1)
       return mlir::failure();
 

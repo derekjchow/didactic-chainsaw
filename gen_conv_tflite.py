@@ -10,8 +10,8 @@
 
 The model has:
 - Input: 320x320x1 (grayscale image), batch size 1
-- Conv2D: 4x4 kernel, stride 3x3, 1 output filter, VALID padding
-- Output quantized to int8
+- Conv2D: 4x4 kernel, stride 3x3, 8 output filters, VALID padding
+- Per-channel quantized filters, output quantized to int8
 """
 
 import numpy as np
@@ -21,7 +21,7 @@ import tensorflow as tf
 def build_model():
     inp = tf.keras.Input(shape=(320, 320, 1), batch_size=1, name="image")
     out = tf.keras.layers.Conv2D(
-        filters=1,
+        filters=8,
         kernel_size=(4, 4),
         strides=(3, 3),
         padding="valid",
@@ -47,6 +47,9 @@ def main():
     converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
     converter.inference_input_type = tf.int8
     converter.inference_output_type = tf.int8
+    # Enable the MLIR quantizer which produces per-channel quantization for
+    # Conv2D filters (one scale/zero-point per output channel).
+    converter._experimental_new_quantizer = True
 
     tflite_model = converter.convert()
 
